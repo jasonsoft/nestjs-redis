@@ -1,0 +1,47 @@
+{
+  "name": "@jasonsoft/nestjs-redis",
+  "version": "1.0.0",
+  "description": "Redis module for Nest framework (node.js)",
+  "scripts": {
+    "build": "rimraf -rf dist && tsc -p tsconfig.json",
+    "format": "prettier **/**/*.ts --ignore-path ./.prettierignore --write",
+    "lint": "eslint 'lib/**/*.ts' --fix",
+    "prepublish:npm": "npm run build",
+    "publish:npm": "npm publish --access public",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jasonsoft/nestjs-redis.git"
+  },
+  "keywords": [
+    "@jasonsoft/nestjs-redis",
+    "jasonsoft",
+    "nestjs-redis",
+    "nestjs",
+    "redis",
+    "ioredis"
+  ],
+  "author": "jason song",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jasonsoft/nestjs-redis/issues"
+  },
+  "homepage": "https://github.com/jasonsoft/nestjs-redis#readme",
+  "devDependencies": {
+    "@types/node": "18.15.5",
+    "@typescript-eslint/eslint-plugin": "5.56.0",
+    "@typescript-eslint/parser": "5.56.0",
+    "eslint": "8.36.0",
+    "eslint-config-prettier": "8.8.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "ioredis": "5.3.1",
+    "prettier": "2.8.6",
+    "rimraf": "4.4.0",
+    "typescript": "4.9.5"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^7.0.0 || ^8.0.0 || ^9.0.0",
+    "ioredis": "^4.0.0 || ^5.0.0"
+  }
+}

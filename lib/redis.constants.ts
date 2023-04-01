@@ -1,0 +1,3 @@
+export const JASONSOFT_REDIS = Symbol('JASONSOFT_REDIS');
+
+export const JASONSOFT_REDIS_OPTIONS = Symbol('JASONSOFT_REDIS_OPTIONS');
