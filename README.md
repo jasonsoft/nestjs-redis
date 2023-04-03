@@ -87,27 +87,28 @@ export interface User {
   age: number;
 }
 
+export const USERS: User[] = [
+  {
+    id: 1,
+    name: 'Jason Song',
+    age: 18,
+  },
+  {
+    id: 2,
+    name: '成长的小猪',
+    age: 30,
+  },
+];
+
 @Injectable()
 export class AppService {
-  users: User[] = [
-    {
-      id: 1,
-      name: 'Jason Song',
-      age: 18,
-    },
-    {
-      id: 2,
-      name: '成长的小猪',
-      age: 30,
-    },
-  ];
   constructor(private readonly redisCacheHelper: RedisCacheHelper) {}
 
   async getUser(id: number): Promise<User> {
     const cacheKey = `user:${id}`;
     let user = await this.redisCacheHelper.getAsObj<User>(cacheKey);
     if (!user) {
-      user = this.users.find((user) => user.id === id);
+      user = USERS.find((user) => user.id === id);
       if (user) {
         await this.redisCacheHelper.set(cacheKey, user);
       }
@@ -117,20 +118,20 @@ export class AppService {
 
   async commonOperation() {
     /** string type */
-    await this.redisCacheHelper.set('string:type', 'test');
+    await this.redisCacheHelper.set('string:type', 'test', 60);
     const stringValue = await this.redisCacheHelper.getAsStr('string:type');
 
     /** number type */
-    await this.redisCacheHelper.set('number:type', 1);
+    await this.redisCacheHelper.set('number:type', 1, '30m');
     const numberValue = await this.redisCacheHelper.getAsNum('number:type');
 
     /** boolean type */
-    await this.redisCacheHelper.set('boolean:type', true);
+    await this.redisCacheHelper.set('boolean:type', true, '8h');
     const booleanValue = await this.redisCacheHelper.getAsBool('boolean:type');
 
     /** object:type */
-    const user = this.users.find((user) => user.name === 'Jason Song');
-    await this.redisCacheHelper.set('object:type', user);
+    const user = USERS.find((user) => user.name === 'Jason Song');
+    await this.redisCacheHelper.set('object:type', user, '7d');
     const objectValue = await this.redisCacheHelper.getAsObj<User>(
       'object:type',
     );
