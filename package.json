@@ -1,6 +1,6 @@
 {
   "name": "@jasonsoft/nestjs-redis",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Redis module for Nest framework (node.js)",
   "scripts": {
     "build": "rimraf -rf dist && tsc -p tsconfig.json",
