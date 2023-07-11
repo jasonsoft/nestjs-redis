@@ -6,7 +6,7 @@
 
 # nestjs-redis
 
-Redis(ioredis) module for Nest framework (node.js) 🐷
+Redis(ioredis) module for Nest framework (node.js) 🚀
 
 [![NPM version][npm-img]][npm-url]
 [![NPM Downloads][downloads-image]][npm-url]
