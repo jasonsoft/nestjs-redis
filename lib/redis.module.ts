@@ -17,7 +17,7 @@ export class RedisModule {
   static forRoot(options: RedisModuleOptions): DynamicModule {
     return {
       module: RedisModule,
-      global: options.isGlobal,
+      global: true,
       providers: [
         {
           provide: JASONSOFT_REDIS_OPTIONS,
