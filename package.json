@@ -29,19 +29,20 @@
   },
   "homepage": "https://github.com/jasonsoft/nestjs-redis#readme",
   "devDependencies": {
-    "@types/node": "18.15.5",
-    "@typescript-eslint/eslint-plugin": "5.56.0",
-    "@typescript-eslint/parser": "5.56.0",
-    "eslint": "8.36.0",
+    "@nestjs/common": "10.0.5",
+    "@types/node": "20.4.1",
+    "@typescript-eslint/eslint-plugin": "6.0.0",
+    "@typescript-eslint/parser": "6.0.0",
+    "eslint": "8.44.0",
     "eslint-config-prettier": "8.8.0",
-    "eslint-plugin-prettier": "4.2.1",
-    "ioredis": "5.3.1",
-    "prettier": "2.8.6",
-    "rimraf": "4.4.0",
-    "typescript": "4.9.5"
+    "eslint-plugin-prettier": "5.0.0",
+    "ioredis": "5.3.2",
+    "prettier": "3.0.0",
+    "rimraf": "5.0.1",
+    "typescript": "5.1.6"
   },
   "peerDependencies": {
-    "@nestjs/common": "^7.0.0 || ^8.0.0 || ^9.0.0",
+    "@nestjs/common": "^8.0.0 || ^9.0.0 || ^10.0.0",
     "ioredis": "^4.0.0 || ^5.0.0"
   }
 }

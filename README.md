@@ -27,7 +27,7 @@ Import `RedisModule`:
   imports: [
     RedisModule.forRoot({
       isGlobal: true,
-      url: 'redis://username:authpassword@localhost:6379',
+      url: 'redis://username:password@localhost:6379',
     }),
   ],
   providers: [...],
@@ -39,11 +39,10 @@ export class AppModule {}
 @Module({
   imports: [
     RedisModule.forRoot({
-      isGlobal: true,
       port: 6379, // Redis port
       host: 'localhost', // Redis host
       username: 'default', // needs Redis >= 6
-      password: 'authpassword',
+      password: 'password',
       db: 0, // Defaults to 0
     }),
   ],
