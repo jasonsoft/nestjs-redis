@@ -40,13 +40,13 @@ export class RedisCacheHelper {
             'Invalid ttl format, if you use strings, make sure to provide time units (minutes, hours, days, etc.), for example: "30m", "8h", "7d"',
           );
         }
-        const [value, unit] = matchArray;
-        const multiplier: any = {
+        const [, num, unit] = matchArray;
+        const multiplier: Record<string, number> = {
           m: 60,
           h: 60 * 60,
           d: 24 * 60 * 60,
         };
-        seconds = parseInt(value) * multiplier[unit];
+        seconds = Math.floor(parseInt(num) * multiplier[unit]);
       } else {
         seconds = expire;
       }
