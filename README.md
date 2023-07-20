@@ -26,7 +26,6 @@ Import `RedisModule`:
 @Module({
   imports: [
     RedisModule.forRoot({
-      isGlobal: true,
       url: 'redis://username:password@localhost:6379',
     }),
   ],
@@ -134,6 +133,54 @@ export class AppService {
     const objectValue = await this.redisCacheHelper.getAsObj<User>(
       'object:type',
     );
+  }
+}
+```
+
+## ioredis usage
+
+> To use ioredis built-in usage
+
+```typescript
+/** Import `InjectRedis` and `Redis` from `@jasonsoft/nestjs-redis` */
+import { InjectRedis, Redis } from '@jasonsoft/nestjs-redis';
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
+export class AppService {
+  /** The @InjectRedis() decorator provides injection into Redis */
+  constructor(@InjectRedis() private readonly redis: Redis) {}
+
+  async getUser(): Promise<string> {
+    const names = ['jason', 'jasonsoft', '成长的小猪'];
+    await this.redis.lpush('names', ...names);
+    return await this.redis.lpop('names');
+  }
+
+  /** ioredis basic usage */
+  async basicUsage() {
+    await this.redis.set('mykey', 'value');
+
+    let result = await this.redis.get('mykey');
+    console.log(result); // Prints "value"
+
+    result = await this.redis.get('mykey');
+    console.log(result); // Prints "value"
+
+    await this.redis.zadd(
+      'sortedSet',
+      1,
+      'one',
+      2,
+      'dos',
+      4,
+      'quatro',
+      3,
+      'three',
+    );
+    const elements = await this.redis.zrange('sortedSet', 0, 2, 'WITHSCORES');
+    console.log(elements);
+    // ["one", "1", "dos", "2", "three", "3"] as if the command was `redis> ZRANGE sortedSet 0 2 WITHSCORES`
   }
 }
 ```
